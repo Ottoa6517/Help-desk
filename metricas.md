@@ -39,26 +39,26 @@
 
 | # | Ticket | Asunto | Tema | Prioridad | SLA | Resolución | SLA cumplido | Escalado |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 405196 | No hay internet en caja | Red e internet | emergency | Crítico - 4h | 2,7 h | Sí | Sí |
-| 2 | 623804 | Olvidé mi contraseña | Cuentas y accesos | normal | Normal - 24h | 12 min | Sí | No |
-| 3 | 676923 | Outlook no recibe correos | Correo y Microsoft 365 | high | Normal - 24h | 1,6 h | Sí | No |
-| 4 | 429996 | La impresora no imprime | Hardware | normal | Normal - 24h | 40 min | Sí | No |
-| 5 | 459588 | Necesito Zoom instalado | Software | low | Baja - 72h | 21,0 h | Sí | No |
-| 6 | 403425 | Laptop muy lenta | Hardware | normal | Normal - 24h | 5,0 h | Sí | No |
-| 7 | 978061 | Cuenta bloqueada | Cuentas y accesos | high | Normal - 24h | 18 min | Sí | No |
-| 8 | 138459 | No puedo abrir un archivo de OneDrive | Correo y Microsoft 365 | normal | Normal - 24h | 1,2 h | Sí | No |
-| 9 | 498163 | La pantalla de la caja no enciende | Hardware | high | Normal - 24h | 30 min | Sí | No |
-| 10 | 933599 | El Wi-Fi de la oficina es lento | Red e internet | normal | Normal - 24h | 27,2 h | **No** | No |
-| 11 | 628797 | Excel se cierra solo | Software | normal | Normal - 24h | 2,0 h | Sí | No |
-| 12 | 708951 | Me llegó un correo raro pidiendo mi clave | Seguridad | high | Crítico - 4h | 2,5 h | Sí | Sí |
-| 13 | 277186 | Cómo comparto una carpeta en Teams | Correo y Microsoft 365 | low | Baja - 72h | 3,3 h | Sí | No |
-| 14 | 856507 | El celular de delivery no carga | Hardware | normal | Normal - 24h | 15 min | Sí | No |
-| 15 | 441941 | Necesito acceso a la carpeta de Inventario | Cuentas y accesos | normal | Normal - 24h | 4,0 h | Sí | No |
-| 16 | 133248 | Windows pide reiniciar por actualizaciones | Software | normal | Normal - 24h | 22,5 h | Sí | No |
-| 17 | 796841 | El antivirus detectó una amenaza | Seguridad | emergency | Crítico - 4h | 3,5 h | Sí | Sí |
-| 18 | 720915 | No me conecto a la VPN | Red e internet | normal | Normal - 24h | 31,0 h | **No** | Sí |
-| 19 | 324443 | Necesito un segundo monitor | Hardware | low | Baja - 72h | 25,0 h | Sí | No |
-| 20 | 103072 | Usuario nuevo: preparar su computadora | Software | normal | Normal - 24h | 7,0 h | Sí | No |
+| 1 | 764345 | No hay internet en caja | Red e internet | emergency | Crítico - 4h | 2,7 h | Sí | Sí |
+| 2 | 697421 | Olvidé mi contraseña | Cuentas y accesos | normal | Normal - 24h | 12 min | Sí | No |
+| 3 | 893268 | Outlook no recibe correos | Correo y Microsoft 365 | high | Normal - 24h | 1,6 h | Sí | No |
+| 4 | 682557 | La impresora no imprime | Hardware | normal | Normal - 24h | 40 min | Sí | No |
+| 5 | 443025 | Necesito Zoom instalado | Software | low | Baja - 72h | 21,0 h | Sí | No |
+| 6 | 301818 | Laptop muy lenta | Hardware | normal | Normal - 24h | 5,0 h | Sí | No |
+| 7 | 342780 | Cuenta bloqueada | Cuentas y accesos | high | Normal - 24h | 18 min | Sí | No |
+| 8 | 585385 | No puedo abrir un archivo de OneDrive | Correo y Microsoft 365 | normal | Normal - 24h | 1,2 h | Sí | No |
+| 9 | 333185 | La pantalla de la caja no enciende | Hardware | high | Normal - 24h | 30 min | Sí | No |
+| 10 | 356358 | El Wi-Fi de la oficina es lento | Red e internet | normal | Normal - 24h | 27,2 h | **No** | No |
+| 11 | 611451 | Excel se cierra solo | Software | normal | Normal - 24h | 2,0 h | Sí | No |
+| 12 | 795920 | Me llegó un correo raro pidiendo mi clave | Seguridad | high | Crítico - 4h | 2,5 h | Sí | Sí |
+| 13 | 486585 | Cómo comparto una carpeta en Teams | Correo y Microsoft 365 | low | Baja - 72h | 3,3 h | Sí | No |
+| 14 | 369735 | El celular de delivery no carga | Hardware | normal | Normal - 24h | 15 min | Sí | No |
+| 15 | 413834 | Necesito acceso a la carpeta de Inventario | Cuentas y accesos | normal | Normal - 24h | 4,0 h | Sí | No |
+| 16 | 320794 | Windows pide reiniciar por actualizaciones | Software | normal | Normal - 24h | 22,5 h | Sí | No |
+| 17 | 637594 | El antivirus detectó una amenaza | Seguridad | emergency | Crítico - 4h | 3,5 h | Sí | Sí |
+| 18 | 439295 | No me conecto a la VPN | Red e internet | normal | Normal - 24h | 31,0 h | **No** | Sí |
+| 19 | 684330 | Necesito un segundo monitor | Hardware | low | Baja - 72h | 25,0 h | Sí | No |
+| 20 | 395118 | Usuario nuevo: preparar su computadora | Software | normal | Normal - 24h | 7,0 h | Sí | No |
 
 ## Tres conclusiones
 

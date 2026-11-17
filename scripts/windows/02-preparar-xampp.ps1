@@ -85,7 +85,8 @@ if ($h -notmatch '(?m)^ServerSignature') { $h += "`r`nServerSignature Off" }
 Guardar $httpd $h
 Write-Host '  Apache: Listen 127.0.0.1:80, ServerTokens Prod, ServerSignature Off'
 $m = Get-Content $myIni -Raw
-if ($m -match '(?m)^[ \t]*#?[ \t]*bind-address[ \t]*=') { $m = $m -replace '(?m)^[ \t]*#?[ \t]*bind-address[ \t]*=[^\r\n]*', 'bind-address=127.0.0.1' }
+# Solo la primera línea bind-address (XAMPP trae dos comentadas: IPv4 e IPv6)
+if ($m -match '(?m)^[ \t]*#?[ \t]*bind-address[ \t]*=') { $m = [regex]::Replace($m, '(?m)^[ \t]*#?[ \t]*bind-address[ \t]*=[^\r\n]*', 'bind-address=127.0.0.1', 1) }
 else { $m = [regex]::Replace($m, '(?m)^\[mysqld\][ \t]*\r?$', "[mysqld]`r`nbind-address=127.0.0.1`r", 1) }
 Guardar $myIni $m
 Write-Host '  MariaDB: bind-address=127.0.0.1'

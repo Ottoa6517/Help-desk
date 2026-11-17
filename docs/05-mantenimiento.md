@@ -37,3 +37,11 @@ schtasks /Create /TN "osTicket cron" /SC MINUTE /MO 5 /RU SYSTEM `
 3. Reemplazar los archivos excepto `include\ost-config.php`.
 4. Entrar a `/scp`: si hay cambios de base de datos, osTicket pide correr el actualizador.
 5. Borrar la carpeta `setup` de nuevo y comprobar un ticket de prueba.
+
+## Si olvidas la contraseña de un agente
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\06-restablecer-agente.ps1 -Usuario otto.admin
+```
+
+Pide la nueva contraseña dos veces en pantalla y la cambia con las clases de osTicket; no queda en el historial de comandos.
