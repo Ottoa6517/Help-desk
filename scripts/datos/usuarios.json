@@ -1,0 +1,66 @@
+[
+  {
+    "clave": "carlos",
+    "nombre": "Carlos Méndez",
+    "correo": "cmendez@dailybrew.local",
+    "puesto": "Gerente de tienda",
+    "ad": "cmendez",
+    "ou": "Ventas"
+  },
+  {
+    "clave": "maria",
+    "nombre": "María García",
+    "correo": "mgarcia@dailybrew.local",
+    "puesto": "Cajera de barra",
+    "ad": "mgarcia",
+    "ou": "Cocina"
+  },
+  {
+    "clave": "luis",
+    "nombre": "Luis Cifuentes",
+    "correo": "lcifuentes@dailybrew.local",
+    "puesto": "Barista",
+    "ad": "lcifuentes",
+    "ou": "Cocina"
+  },
+  {
+    "clave": "sofia",
+    "nombre": "Sofía Pérez",
+    "correo": "sperez@dailybrew.local",
+    "puesto": "Repartidora (delivery)",
+    "ad": "sperez",
+    "ou": "Cocina"
+  },
+  {
+    "clave": "andres",
+    "nombre": "Andrés Soto",
+    "correo": "asoto@dailybrew.local",
+    "puesto": "Contabilidad",
+    "ad": "asoto",
+    "ou": "Administracion"
+  },
+  {
+    "clave": "paola",
+    "nombre": "Paola Recinos",
+    "correo": "precinos@dailybrew.local",
+    "puesto": "Marketing",
+    "ad": "precinos",
+    "ou": "Administracion"
+  },
+  {
+    "clave": "jose",
+    "nombre": "José Hernández",
+    "correo": "jhernandez@dailybrew.local",
+    "puesto": "Bodega",
+    "ad": "jhernandez",
+    "ou": "Cocina"
+  },
+  {
+    "clave": "elena",
+    "nombre": "Elena Ruiz",
+    "correo": "eruiz@dailybrew.local",
+    "puesto": "Atención al cliente",
+    "ad": "eruiz",
+    "ou": "Administracion"
+  }
+]

@@ -1,0 +1,17 @@
+# Credenciales y configuración local: nunca se suben
+ost-config.php
+*.env
+.env*
+*.pem
+*.key
+# Respaldos de la base de datos (contienen datos y hashes)
+respaldos/
+*.sql
+*.sql.zip
+# Archivos temporales
+*.bak
+*.log
+__pycache__/
+.vscode/
+Thumbs.db
+desktop.ini

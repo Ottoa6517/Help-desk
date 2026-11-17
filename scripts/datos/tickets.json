@@ -1,0 +1,580 @@
+[
+  {
+    "n": 1,
+    "usuario": "maria",
+    "tema": "Red e internet",
+    "prioridad": "emergency",
+    "sla": "Crítico - 4h",
+    "canal": "Phone",
+    "asunto": "No hay internet en caja",
+    "mensaje": "La caja no puede cobrar con tarjeta, dice que no hay conexión. Ya hay fila de clientes.",
+    "escalar": {
+      "equipo": "Nivel 2",
+      "motivo": "El reinicio no lo resolvió y la luz LOS del router está en rojo: es un corte de fibra del proveedor. Nivel 2 tiene el contrato y el número de soporte del ISP."
+    },
+    "nota": {
+      "sintoma": "La caja no procesa pagos con tarjeta; ningún equipo de la tienda tiene internet.",
+      "diagnostico": "El router tiene luz LOS en rojo y PON apagada. Reinicié el router (30 s sin corriente): misma luz. La red local funciona (la caja hace ping a 192.168.1.1), pero no a 8.8.8.8.",
+      "causa": "Corte de fibra óptica del proveedor de internet en la zona.",
+      "solucion": "Contingencia en 10 min: conecté la caja al hotspot 4G del celular de la tienda para seguir cobrando. Escalé a Nivel 2, que abrió el caso con el ISP. El proveedor reparó la fibra y la conexión volvió; quité el hotspot y probé un cobro de Q1.00: OK.",
+      "prevencion": "Proponer un segundo enlace 4G de respaldo en el router (failover automático) y dejar el número del ISP pegado junto al router.",
+      "tiempo_min": 35
+    },
+    "respuesta": "Hola María: el internet ya volvió. Fue un corte de fibra del proveedor en la zona, no algo de la tienda. Mientras lo reparaban dejamos la caja conectada al celular para que pudieras seguir cobrando. Si vuelve a pasar, llama directo a la extensión 100.",
+    "kb": null,
+    "crono": {
+      "dia": 0,
+      "hora": "08:05",
+      "primera_respuesta_min": 4,
+      "resolucion_min": 160
+    },
+    "plantillas": [
+      "03 - Reinicio básico antes de escalar"
+    ]
+  },
+  {
+    "n": 2,
+    "usuario": "luis",
+    "tema": "Cuentas y accesos",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Other",
+    "asunto": "Olvidé mi contraseña",
+    "mensaje": "Volví de vacaciones y no me acuerdo de mi contraseña de la computadora.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Luis no puede iniciar sesión en el dominio después de sus vacaciones.",
+      "diagnostico": "Verifiqué su identidad en persona con su gafete y con su supervisor presente. La cuenta lcifuentes no está bloqueada (Search-ADAccount -LockedOut no la lista), solo olvidó la clave.",
+      "causa": "Contraseña olvidada.",
+      "solucion": "En DC01: Set-ADAccountPassword lcifuentes -Reset con una clave temporal dicha en persona, y Set-ADUser lcifuentes -ChangePasswordAtLogon $true. Luis inició sesión y creó su nueva contraseña.",
+      "prevencion": "Habilitar autoservicio de restablecimiento de contraseña (SSPR) para que el usuario lo haga solo tras verificar su identidad.",
+      "tiempo_min": 10
+    },
+    "respuesta": "Hola Luis: tu contraseña quedó restablecida y ya creaste la nueva. Recuerda: una frase larga que puedas recordar y que no uses en ningún otro sitio.",
+    "kb": "kb01",
+    "crono": {
+      "dia": 0,
+      "hora": "09:20",
+      "primera_respuesta_min": 2,
+      "resolucion_min": 12
+    },
+    "plantillas": [
+      "04 - Contraseña restablecida"
+    ]
+  },
+  {
+    "n": 3,
+    "usuario": "carlos",
+    "tema": "Correo y Microsoft 365",
+    "prioridad": "high",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "Outlook no recibe correos",
+    "mensaje": "Desde ayer no me llegan correos nuevos. Los proveedores dicen que me escribieron y yo no veo nada.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "No entran correos nuevos desde ayer; los proveedores reciben rebotes.",
+      "diagnostico": "La barra inferior de Outlook dice 'Buzón lleno'. En Archivo > Herramientas > Limpieza de buzón el tamaño es 49,8 de 50 GB. La carpeta Elementos eliminados ocupa 11 GB y hay correos con adjuntos de más de 20 MB.",
+      "causa": "Buzón al 100 % de su cuota: el servidor rechaza los correos entrantes.",
+      "solucion": "Vacié Elementos eliminados, ordené por tamaño y moví los adjuntos grandes a OneDrive con el usuario. Quedó en 31 GB. Envié un correo de prueba desde otra cuenta: llegó en segundos.",
+      "prevencion": "Configurar autoarchivado y enseñar a compartir enlaces de OneDrive en vez de adjuntar archivos grandes.",
+      "tiempo_min": 30
+    },
+    "respuesta": "Hola Carlos: tu buzón estaba lleno y por eso el servidor rechazaba los correos. Lo liberamos (ahora tienes 19 GB disponibles) y ya entran normal. Pide a los proveedores que reenvíen lo de ayer.",
+    "kb": "kb02",
+    "crono": {
+      "dia": 0,
+      "hora": "10:40",
+      "primera_respuesta_min": 15,
+      "resolucion_min": 95
+    },
+    "plantillas": []
+  },
+  {
+    "n": 4,
+    "usuario": "andres",
+    "tema": "Hardware",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "La impresora no imprime",
+    "mensaje": "Mando a imprimir las facturas y no sale nada. La impresora dice Lista.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Andrés manda a imprimir facturas y no sale nada; la impresora muestra Lista.",
+      "diagnostico": "En Configuración > Impresoras había 6 trabajos atascados. El primero estaba en Error.",
+      "causa": "Un trabajo dañado bloqueó la cola de impresión.",
+      "solucion": "services.msc > Print Spooler > Detener. Borré los archivos de C:\\Windows\\System32\\spool\\PRINTERS. Inicié el servicio y envié página de prueba: OK.",
+      "prevencion": "Si se repite, actualizar el driver de la impresora desde la página del fabricante.",
+      "tiempo_min": 12
+    },
+    "respuesta": "Hola Andrés: un documento dañado había trabado la cola de impresión. La limpiamos y la impresora ya funciona. Reenvía las facturas que no salieron.",
+    "kb": "kb03",
+    "crono": {
+      "dia": 1,
+      "hora": "08:30",
+      "primera_respuesta_min": 10,
+      "resolucion_min": 40
+    },
+    "plantillas": []
+  },
+  {
+    "n": 5,
+    "usuario": "sofia",
+    "tema": "Software",
+    "prioridad": "low",
+    "sla": "Baja - 72h",
+    "canal": "Web",
+    "asunto": "Necesito Zoom instalado",
+    "mensaje": "Me pidieron entrar a una capacitación por Zoom el jueves y no lo tengo en la computadora.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Solicitud de servicio: instalar Zoom para una capacitación.",
+      "diagnostico": "Confirmé por correo con Carlos (gerente) que la capacitación es oficial y que Zoom está en la lista de software aprobado. El usuario no es administrador del equipo, así que no puede instalarlo solo (correcto).",
+      "causa": "Programa no instalado; es una solicitud, no una falla.",
+      "solucion": "Instalé desde la fuente oficial con winget install --id Zoom.Zoom -e y comprobé la firma digital del instalador (Zoom Communications). Hice una reunión de prueba con audio y cámara: OK.",
+      "prevencion": "Publicar la lista de software aprobado en el portal para que las solicitudes lleguen con la aprobación incluida.",
+      "tiempo_min": 15
+    },
+    "respuesta": "Hola Sofía: ya tienes Zoom instalado y probado con audio y cámara. Para la capacitación solo abre el enlace que te enviaron.",
+    "kb": null,
+    "crono": {
+      "dia": 1,
+      "hora": "11:10",
+      "primera_respuesta_min": 40,
+      "resolucion_min": 1260
+    },
+    "plantillas": []
+  },
+  {
+    "n": 6,
+    "usuario": "paola",
+    "tema": "Hardware",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "Laptop muy lenta",
+    "mensaje": "La laptop tarda como 10 minutos en encender y todo se congela cuando abro Canva y el correo a la vez.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Arranque de unos 10 minutos y congelamientos con varias aplicaciones abiertas.",
+      "diagnostico": "Administrador de tareas: disco al 100 % durante el arranque y 14 aplicaciones habilitadas en Inicio. El disco C: tenía 3 GB libres de 237 GB (la carpeta Descargas ocupaba 60 GB).",
+      "causa": "Disco casi lleno y demasiados programas al iniciar.",
+      "solucion": "Con la usuaria: moví Descargas a OneDrive y borré instaladores viejos; Liberador de espacio (incluyendo archivos de sistema). Deshabilité 10 aplicaciones de inicio que no necesita. Resultado: 48 GB libres y arranque en 1 min 20 s.",
+      "prevencion": "Activar Sensor de almacenamiento para que limpie temporales y la papelera cada mes.",
+      "tiempo_min": 40
+    },
+    "respuesta": "Hola Paola: la laptop tenía el disco casi lleno y muchos programas arrancando solos. Liberamos 45 GB y quitamos lo que no necesitabas al inicio. Ahora enciende en poco más de un minuto.",
+    "kb": "kb04",
+    "crono": {
+      "dia": 1,
+      "hora": "14:00",
+      "primera_respuesta_min": 20,
+      "resolucion_min": 300
+    },
+    "plantillas": []
+  },
+  {
+    "n": 7,
+    "usuario": "jose",
+    "tema": "Cuentas y accesos",
+    "prioridad": "high",
+    "sla": "Normal - 24h",
+    "canal": "Phone",
+    "asunto": "Cuenta bloqueada",
+    "mensaje": "No me deja entrar, dice que mi cuenta está bloqueada. Tengo que registrar la mercadería que llegó.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Mensaje 'La cuenta a la que se hace referencia está bloqueada'.",
+      "diagnostico": "Search-ADAccount -LockedOut lista a jhernandez. En el Visor de eventos de DC01 (registro Security) el evento 4740 indica que el bloqueo vino de CLIENTE01, el equipo de José, y los 4625 previos son 3 intentos seguidos en 1 minuto. Le pregunté y confirmó que se equivocó al escribir la clave.",
+      "causa": "Tres intentos fallidos alcanzaron el umbral de bloqueo de la política del dominio. Origen legítimo, no hay indicio de ataque.",
+      "solucion": "Unlock-ADAccount jhernandez. José inició sesión de inmediato.",
+      "prevencion": "Si un bloqueo viene de un equipo que no es del usuario o fuera de horario, tratarlo como incidente de seguridad y escalarlo.",
+      "tiempo_min": 15
+    },
+    "respuesta": "Hola José: tu cuenta se bloqueó porque se escribió mal la contraseña tres veces seguidas desde tu equipo. Ya la desbloqueamos. Si vuelve a pasar sin que te hayas equivocado, avísanos de inmediato.",
+    "kb": null,
+    "crono": {
+      "dia": 2,
+      "hora": "07:45",
+      "primera_respuesta_min": 3,
+      "resolucion_min": 18
+    },
+    "plantillas": []
+  },
+  {
+    "n": 8,
+    "usuario": "elena",
+    "tema": "Correo y Microsoft 365",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "No puedo abrir un archivo de OneDrive",
+    "mensaje": "Paola me mandó el enlace del calendario de promociones y me sale que no tengo acceso.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Al abrir el enlace aparece 'Necesita permiso para obtener acceso a este elemento'.",
+      "diagnostico": "Elena estaba abriendo el enlace con su cuenta personal de Microsoft en el navegador. Además el archivo estaba compartido solo con 'Personas específicas' y ella no estaba en la lista.",
+      "causa": "Permisos: el archivo no estaba compartido con la cuenta de trabajo de Elena.",
+      "solucion": "Pedí a Paola (propietaria) que compartiera el archivo con eruiz@dailybrew.local con permiso de edición. Elena cerró sesión de la cuenta personal e ingresó con la del trabajo: abrió el archivo.",
+      "prevencion": "Usar un perfil de navegador solo para la cuenta del trabajo.",
+      "tiempo_min": 10
+    },
+    "respuesta": "Hola Elena: el archivo no estaba compartido con tu cuenta del trabajo y además el navegador usaba tu cuenta personal. Paola ya te dio acceso de edición. Si te vuelve a pasar, revisa con qué cuenta entraste.",
+    "kb": "kb05",
+    "crono": {
+      "dia": 2,
+      "hora": "10:15",
+      "primera_respuesta_min": 12,
+      "resolucion_min": 70
+    },
+    "plantillas": []
+  },
+  {
+    "n": 9,
+    "usuario": "maria",
+    "tema": "Hardware",
+    "prioridad": "high",
+    "sla": "Normal - 24h",
+    "canal": "Other",
+    "asunto": "La pantalla de la caja no enciende",
+    "mensaje": "La pantalla de la caja está negra, la computadora sí suena.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Monitor de la caja negro; el CPU enciende.",
+      "diagnostico": "La luz de encendido del monitor no prende. Revisé y reconecté el cable de poder y el HDMI: igual. Probé el monitor en otro equipo y con otro cable de poder: no enciende. Un monitor de prueba conectado a la caja sí da imagen.",
+      "causa": "Fuente de poder interna del monitor dañada.",
+      "solucion": "Instalé temporalmente el monitor de la sala de capacitación para que la caja siguiera operando (servicio restablecido en 25 min). Etiqueté el monitor dañado y pedí el reemplazo a Carlos.",
+      "prevencion": "Mantener al menos un monitor de repuesto en bodega para equipos críticos (caja).",
+      "tiempo_min": 25
+    },
+    "respuesta": "Hola María: el monitor se dañó (no es la computadora). Ya tienes uno de reemplazo y la caja funciona. Cuando llegue el monitor nuevo te lo instalamos sin interrumpir tu turno.",
+    "kb": null,
+    "crono": {
+      "dia": 3,
+      "hora": "08:10",
+      "primera_respuesta_min": 5,
+      "resolucion_min": 30
+    },
+    "plantillas": []
+  },
+  {
+    "n": 10,
+    "usuario": "carlos",
+    "tema": "Red e internet",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "El Wi-Fi de la oficina es lento",
+    "mensaje": "En las tardes el Wi-Fi de la oficina es lentísimo, las videollamadas se cortan.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Wi-Fi lento por las tardes; videollamadas que se cortan.",
+      "diagnostico": "Con un analizador Wi-Fi: el router usa el canal 6 de 2,4 GHz, compartido con 8 redes vecinas. El router tiene 31 dispositivos conectados: los clientes de la cafetería usan la misma red que la oficina. La banda de 5 GHz está apagada.",
+      "causa": "Interferencia en el canal y red compartida entre clientes y personal.",
+      "solucion": "Fuera del horario de atención (19:00): cambié 2,4 GHz al canal 11, activé 5 GHz para el personal y creé la red DailyBrew-Clientes con aislamiento de clientes y límite de 5 Mbps por dispositivo. Al día siguiente la prueba de velocidad en la oficina pasó de 3 a 48 Mbps.",
+      "prevencion": "Revisar canales cada trimestre. Nota: el SLA se venció porque el cambio se programó fuera de horario para no cortar ventas; debió pausarse el SLA o acordarse con el usuario.",
+      "tiempo_min": 60
+    },
+    "respuesta": "Hola Carlos: el Wi-Fi estaba saturado porque los clientes y la oficina compartían la misma red y el canal estaba lleno de redes vecinas. Separamos la red de clientes y movimos la oficina a 5 GHz. La velocidad pasó de 3 a 48 Mbps.",
+    "kb": "kb06",
+    "crono": {
+      "dia": 3,
+      "hora": "15:30",
+      "primera_respuesta_min": 25,
+      "resolucion_min": 1630
+    },
+    "plantillas": []
+  },
+  {
+    "n": 11,
+    "usuario": "andres",
+    "tema": "Software",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "Excel se cierra solo",
+    "mensaje": "Abro el archivo de costos y Excel se cierra sin ningún mensaje.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Excel se cierra al abrir cualquier libro, sin mensaje de error.",
+      "diagnostico": "Visor de eventos > Aplicación: evento 1000 (Application Error) de EXCEL.EXE con un módulo de un complemento de PDF de terceros. Con excel /safe (modo seguro, sin complementos) abre bien.",
+      "causa": "Complemento COM dañado.",
+      "solucion": "Archivo > Opciones > Complementos > Administrar: Complementos COM > desmarqué el complemento de PDF. Excel abrió normal. Hice además Reparación rápida de Office desde Aplicaciones instaladas.",
+      "prevencion": "Instalar complementos solo de la lista aprobada; Office ya exporta a PDF sin complementos.",
+      "tiempo_min": 25
+    },
+    "respuesta": "Hola Andrés: el problema era un complemento de PDF que se dañó y hacía cerrar Excel. Lo desactivamos y reparamos Office. Para guardar en PDF usa Archivo > Exportar > PDF, no necesitas el complemento.",
+    "kb": "kb07",
+    "crono": {
+      "dia": 4,
+      "hora": "09:00",
+      "primera_respuesta_min": 18,
+      "resolucion_min": 120
+    },
+    "plantillas": [
+      "02 - Pedir más información"
+    ]
+  },
+  {
+    "n": 12,
+    "usuario": "luis",
+    "tema": "Seguridad",
+    "prioridad": "high",
+    "sla": "Crítico - 4h",
+    "canal": "Email",
+    "asunto": "Me llegó un correo raro pidiendo mi clave",
+    "mensaje": "Me llegó un correo de 'Microsoft' que dice que mi cuenta se va a cerrar si no confirmo mi contraseña en un enlace. No le di clic.",
+    "escalar": {
+      "equipo": "Nivel 2",
+      "motivo": "Hay que buscar y eliminar el correo de todos los buzones y bloquear el dominio del remitente para toda la empresa; eso requiere permisos de administración de Exchange."
+    },
+    "nota": {
+      "sintoma": "Correo que suplanta a Microsoft y pide confirmar la contraseña en un enlace.",
+      "diagnostico": "Remitente seguridad@micros0ft-verify.com (cero en vez de o). Encabezados: SPF fail. El enlace lleva a una página falsa de inicio de sesión. Luis confirma que no hizo clic ni escribió su clave. Otros 4 empleados recibieron el mismo correo.",
+      "causa": "Campaña de phishing dirigida a la empresa.",
+      "solucion": "Luis lo reportó con el botón Reportar phishing y bloqueó al remitente. Escalé a Nivel 2: eliminó el correo de los 5 buzones y bloqueó el dominio. Envié un aviso a todo el personal con una captura del correo falso. Como nadie escribió su clave, no fue necesario restablecer contraseñas.",
+      "prevencion": "Habilitar MFA para todos y capacitación corta sobre phishing. Si alguien hubiera escrito su clave: restablecerla, cerrar sus sesiones y revisar reglas del buzón.",
+      "tiempo_min": 30
+    },
+    "respuesta": "Hola Luis: hiciste lo correcto al no dar clic y reportarlo. Era un correo falso (phishing) y lo eliminamos de todos los buzones de la empresa. Gracias a tu aviso alertamos a todo el equipo.",
+    "kb": "kb08",
+    "crono": {
+      "dia": 4,
+      "hora": "11:30",
+      "primera_respuesta_min": 6,
+      "resolucion_min": 150
+    },
+    "plantillas": []
+  },
+  {
+    "n": 13,
+    "usuario": "paola",
+    "tema": "Correo y Microsoft 365",
+    "prioridad": "low",
+    "sla": "Baja - 72h",
+    "canal": "Web",
+    "asunto": "Cómo comparto una carpeta en Teams",
+    "mensaje": "Quiero que el equipo de tienda vea las artes de las promociones. ¿Cómo comparto una carpeta en Teams?",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Consulta de uso: compartir una carpeta con un equipo.",
+      "diagnostico": "No es una falla. Paola es miembro del equipo 'Tienda' en Teams.",
+      "causa": "Falta de capacitación en la herramienta.",
+      "solucion": "Guié a Paola por llamada: Teams > equipo Tienda > canal General > pestaña Archivos > Cargar > Carpeta. Los miembros del equipo heredan el acceso. Convertí la guía en el artículo kb09 de la base de conocimiento.",
+      "prevencion": "Enlazar el artículo en el mensaje de bienvenida a Teams.",
+      "tiempo_min": 15
+    },
+    "respuesta": "Hola Paola: como vimos en la llamada, sube la carpeta en la pestaña Archivos del canal y todos los miembros del equipo la verán. Te dejo la guía paso a paso en el portal de soporte: '¿Cómo comparto una carpeta en Teams?'.",
+    "kb": "kb09",
+    "crono": {
+      "dia": 5,
+      "hora": "10:00",
+      "primera_respuesta_min": 30,
+      "resolucion_min": 200
+    },
+    "plantillas": []
+  },
+  {
+    "n": 14,
+    "usuario": "sofia",
+    "tema": "Hardware",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Other",
+    "asunto": "El celular de delivery no carga",
+    "mensaje": "El celular que uso para las entregas no carga, se me va a apagar a media ruta.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "El celular de la empresa no carga con el cable de siempre.",
+      "diagnostico": "Con otro cable y otro cargador carga normal. El cable original tiene el forro roto cerca del conector. El puerto del teléfono tenía pelusa: lo limpié con un palillo de madera (nunca con metal).",
+      "causa": "Cable de carga dañado.",
+      "solucion": "Reemplacé el cable por uno nuevo del inventario y registré el cambio en la hoja de activos.",
+      "prevencion": "Dar a los repartidores un cargador de auto y un cable de repuesto.",
+      "tiempo_min": 10
+    },
+    "respuesta": "Hola Sofía: el cable estaba dañado, no el celular. Ya tienes uno nuevo. Si el puerto se vuelve a ensuciar, no le metas nada de metal: tráelo y lo limpiamos.",
+    "kb": null,
+    "crono": {
+      "dia": 5,
+      "hora": "13:20",
+      "primera_respuesta_min": 2,
+      "resolucion_min": 15
+    },
+    "plantillas": []
+  },
+  {
+    "n": 15,
+    "usuario": "jose",
+    "tema": "Cuentas y accesos",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "Necesito acceso a la carpeta de Inventario",
+    "mensaje": "Ahora llevo el control de bodega y necesito abrir la carpeta de Inventario en la unidad S:.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "José no puede abrir S:\\Inventario (Acceso denegado).",
+      "diagnostico": "La carpeta \\\\dc01\\Compartido\\Inventario da permisos al grupo GG_Inventario y José no es miembro. Pedí aprobación por correo a Carlos (gerente): aprobado y adjunto al ticket.",
+      "causa": "Solicitud de acceso nueva; el permiso no existía.",
+      "solucion": "En DC01: Add-ADGroupMember GG_Inventario -Members jhernandez. Le pedí cerrar y abrir sesión para que se actualice su token de grupos. Abrió la carpeta y creó un archivo de prueba: OK.",
+      "prevencion": "Dar permisos siempre por grupo, nunca a usuarios sueltos, y solo con aprobación del responsable de la carpeta (mínimo privilegio).",
+      "tiempo_min": 20
+    },
+    "respuesta": "Hola José: ya tienes acceso a la carpeta de Inventario con la aprobación de Carlos. Si no la ves, cierra sesión y vuelve a entrar.",
+    "kb": null,
+    "crono": {
+      "dia": 6,
+      "hora": "08:45",
+      "primera_respuesta_min": 15,
+      "resolucion_min": 240
+    },
+    "plantillas": []
+  },
+  {
+    "n": 16,
+    "usuario": "elena",
+    "tema": "Software",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "Windows pide reiniciar por actualizaciones",
+    "mensaje": "Me sale a cada rato que tengo que reiniciar por actualizaciones, pero estoy atendiendo clientes.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Avisos repetidos de reinicio pendiente durante el horario de atención.",
+      "diagnostico": "Configuración > Windows Update: actualización acumulativa pendiente de reinicio desde hace 4 días. Horas activas sin configurar.",
+      "causa": "Reinicio pendiente que la usuaria pospone por estar atendiendo.",
+      "solucion": "Configuré horas activas de 07:00 a 19:00 y programé el reinicio a las 19:30. Al día siguiente revisé el Historial de actualizaciones: instalada correctamente.",
+      "prevencion": "Configurar las horas activas por directiva de grupo para todos los equipos de atención.",
+      "tiempo_min": 10
+    },
+    "respuesta": "Hola Elena: dejamos programado el reinicio para después de tu turno y la actualización ya quedó instalada. Ya no te debería interrumpir en horario de atención.",
+    "kb": null,
+    "crono": {
+      "dia": 6,
+      "hora": "11:00",
+      "primera_respuesta_min": 20,
+      "resolucion_min": 1350
+    },
+    "plantillas": []
+  },
+  {
+    "n": 17,
+    "usuario": "carlos",
+    "tema": "Seguridad",
+    "prioridad": "emergency",
+    "sla": "Crítico - 4h",
+    "canal": "Phone",
+    "asunto": "El antivirus detectó una amenaza",
+    "mensaje": "Me salió una alerta roja del antivirus después de abrir una factura que me mandaron por correo.",
+    "escalar": {
+      "equipo": "Nivel 2",
+      "motivo": "Posible malware ejecutado en el equipo del gerente: requiere análisis forense, revisar otros equipos y decidir si se reinstala."
+    },
+    "nota": {
+      "sintoma": "Alerta de Microsoft Defender tras abrir un adjunto 'factura_pdf.exe'.",
+      "diagnostico": "Protección contra virus y amenazas > Historial: Trojan detectado y puesto en cuarentena en Descargas. El archivo era un ejecutable disfrazado de PDF.",
+      "causa": "Adjunto malicioso en un correo de un falso proveedor.",
+      "solucion": "Aislé el equipo de la red (cable y Wi-Fi) sin apagarlo. Ejecuté un examen completo de Defender: solo la detección ya en cuarentena. Escalé a Nivel 2, que revisó los demás equipos y confirmó que no hubo propagación. Por precaución se restablecieron las contraseñas usadas en ese equipo. Todo quedó documentado en este ticket.",
+      "prevencion": "Bloquear adjuntos .exe en el correo, mostrar extensiones de archivo en Windows y capacitar sobre facturas falsas.",
+      "tiempo_min": 45
+    },
+    "respuesta": "Hola Carlos: el antivirus bloqueó el archivo a tiempo. Revisamos tu equipo y los demás y no hay rastro de infección; por precaución cambiamos tus contraseñas. Ese correo de 'factura' era falso: si te llega algo parecido, no lo abras y reenvíanoslo.",
+    "kb": null,
+    "crono": {
+      "dia": 7,
+      "hora": "09:10",
+      "primera_respuesta_min": 3,
+      "resolucion_min": 210
+    },
+    "plantillas": []
+  },
+  {
+    "n": 18,
+    "usuario": "andres",
+    "tema": "Red e internet",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "No me conecto a la VPN",
+    "mensaje": "Trabajo desde casa los viernes y hoy la VPN no conecta, dice error de autenticación.",
+    "escalar": {
+      "equipo": "Nivel 2",
+      "motivo": "El cliente de VPN necesita un perfil nuevo del firewall y solo Nivel 2 tiene acceso a la consola del firewall."
+    },
+    "nota": {
+      "sintoma": "La VPN falla con 'error de autenticación' desde casa.",
+      "diagnostico": "El usuario y la contraseña funcionan en el correo, así que no son las credenciales. La versión del cliente de VPN es anterior a la actualización de firmware que se aplicó al firewall esta semana, y el registro del cliente muestra un error de negociación.",
+      "causa": "Cliente de VPN desactualizado e incompatible con el firmware nuevo del firewall.",
+      "solucion": "Escalé a Nivel 2. Generó un perfil nuevo y publicó la versión actualizada del cliente. Lo instalé con Andrés por sesión remota y conectó. El SLA se venció porque Nivel 2 tenía otro caso crítico.",
+      "prevencion": "Antes de actualizar el firewall, actualizar los clientes de VPN y avisar a quienes trabajan remoto.",
+      "tiempo_min": 30
+    },
+    "respuesta": "Hola Andrés: la VPN fallaba porque el programa de tu computadora quedó viejo después de una actualización del firewall. Ya lo actualizamos y conectas normal. Disculpa la demora.",
+    "kb": "kb10",
+    "crono": {
+      "dia": 8,
+      "hora": "08:20",
+      "primera_respuesta_min": 35,
+      "resolucion_min": 1860
+    },
+    "plantillas": []
+  },
+  {
+    "n": 19,
+    "usuario": "maria",
+    "tema": "Hardware",
+    "prioridad": "low",
+    "sla": "Baja - 72h",
+    "canal": "Web",
+    "asunto": "Necesito un segundo monitor",
+    "mensaje": "Para ver los pedidos de delivery y la caja al mismo tiempo me ayudaría un segundo monitor.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Solicitud de equipo: segundo monitor para la caja.",
+      "diagnostico": "Carlos aprobó la solicitud por correo. La computadora de caja tiene salidas HDMI y DisplayPort libres.",
+      "causa": "Solicitud de servicio.",
+      "solucion": "Entregué e instalé el monitor por DisplayPort. Windows + P > Extender. En Configuración > Pantalla ordené los monitores igual que en el escritorio y dejé la caja como pantalla principal. Registré el activo en el inventario.",
+      "prevencion": "No aplica.",
+      "tiempo_min": 20
+    },
+    "respuesta": "Hola María: ya tienes el segundo monitor en modo extendido. Puedes arrastrar la ventana de pedidos hacia la derecha y la caja queda en la pantalla principal.",
+    "kb": null,
+    "crono": {
+      "dia": 8,
+      "hora": "14:00",
+      "primera_respuesta_min": 45,
+      "resolucion_min": 1500
+    },
+    "plantillas": []
+  },
+  {
+    "n": 20,
+    "usuario": "paola",
+    "tema": "Software",
+    "prioridad": "normal",
+    "sla": "Normal - 24h",
+    "canal": "Web",
+    "asunto": "Usuario nuevo: preparar su computadora",
+    "mensaje": "El lunes entra Hugo Salazar a Bodega. Necesita usuario, correo y computadora lista.",
+    "escalar": null,
+    "nota": {
+      "sintoma": "Solicitud de alta (onboarding) para un empleado nuevo de Bodega.",
+      "diagnostico": "En el dominio no existía la OU Bodega (por eso la carga masiva del Proyecto 1 marcó error en hsalazar). Carlos confirmó puesto y fecha de ingreso.",
+      "causa": "Solicitud de servicio: alta de usuario.",
+      "solucion": "En DC01: New-ADOrganizationalUnit Bodega bajo OU=DailyBrew, grupo GG_Bodega, New-ADUser hsalazar con -ChangePasswordAtLogon $true y alta en GG_Bodega y GG_Inventario. Uní el equipo al dominio con Add-Computer y lo moví a la OU Equipos. Instalé Microsoft 365 Apps y verifiqué con gpresult /r que aplican las GPO de fondo y unidad S:.",
+      "prevencion": "Crear una lista de verificación de onboarding y pedir los datos con 2 días hábiles de anticipación.",
+      "tiempo_min": 60
+    },
+    "respuesta": "Hola Paola: Hugo ya tiene usuario, correo y computadora lista. El lunes debe iniciar sesión con la contraseña temporal que le daremos en persona y crear la suya.",
+    "kb": null,
+    "crono": {
+      "dia": 9,
+      "hora": "09:00",
+      "primera_respuesta_min": 25,
+      "resolucion_min": 420
+    },
+    "plantillas": []
+  }
+]

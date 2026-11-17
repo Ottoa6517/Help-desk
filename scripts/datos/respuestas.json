@@ -1,0 +1,32 @@
+[
+  {
+    "titulo": "01 - Acuse de recibo",
+    "uso": "Primera respuesta de todo ticket.",
+    "texto": "Hola %{ticket.name.first}:\n\nRecibimos tu solicitud #%{ticket.number} (\"%{ticket.subject}\"). Ya la estamos revisando y te contactaremos antes de %{ticket.due_date}.\n\nSi el problema empeora o deja a tu área sin trabajar, responde a este mensaje con la palabra URGENTE o llama a la extensión 100.\n\nSoporte de TI - Daily Brew"
+  },
+  {
+    "titulo": "02 - Pedir más información",
+    "uso": "Cuando el ticket no trae datos suficientes para diagnosticar.",
+    "texto": "Hola %{ticket.name.first}:\n\nPara resolver tu solicitud #%{ticket.number} más rápido necesitamos tres datos:\n\n1. ¿Qué mensaje de error aparece? Si puedes, adjunta una captura de pantalla (tecla Windows + Shift + S).\n2. ¿Desde cuándo pasa y qué estabas haciendo cuando empezó?\n3. ¿Le pasa solo a ti o también a otros compañeros?\n\nMientras tanto el ticket queda abierto. Gracias.\n\nSoporte de TI - Daily Brew"
+  },
+  {
+    "titulo": "03 - Reinicio básico antes de escalar",
+    "uso": "Fallas de equipo o de red que suelen resolverse reiniciando.",
+    "texto": "Hola %{ticket.name.first}:\n\nAntes de enviar a un técnico, prueba estos pasos en orden (toman unos 5 minutos):\n\n1. Guarda tu trabajo y cierra los programas.\n2. Reinicia la computadora desde Inicio > Apagar > Reiniciar (no uses solo el botón de apagado).\n3. Si el problema es de internet, desconecta el router de la corriente, espera 30 segundos y vuelve a conectarlo. Espera 2 minutos a que las luces se estabilicen.\n4. Prueba de nuevo.\n\nResponde a este mensaje con el resultado: si sigue igual, lo escalamos de inmediato.\n\nSoporte de TI - Daily Brew"
+  },
+  {
+    "titulo": "04 - Contraseña restablecida",
+    "uso": "Después de restablecer una contraseña y verificar la identidad del usuario.",
+    "texto": "Hola %{ticket.name.first}:\n\nRestablecimos tu contraseña. La contraseña temporal te la dimos por teléfono o en persona; nunca la enviamos por correo.\n\n1. Inicia sesión en tu computadora con tu usuario y la contraseña temporal.\n2. Windows te pedirá crear una nueva. Usa una frase larga de al menos 15 caracteres que puedas recordar, por ejemplo cuatro palabras al azar.\n3. No la anotes en papel junto a la computadora ni la compartas con nadie, tampoco con Soporte de TI.\n\nSi no puedes entrar, responde a este ticket.\n\nSoporte de TI - Daily Brew"
+  },
+  {
+    "titulo": "05 - Escalado a Nivel 2",
+    "uso": "Avisar al usuario que su caso pasó al siguiente nivel.",
+    "texto": "Hola %{ticket.name.first}:\n\nTu solicitud #%{ticket.number} necesita a un especialista, así que la pasamos al equipo de Soporte Nivel 2. Ya tienen toda la información que nos diste, no necesitas repetirla.\n\nTe escribiremos en cuanto haya avances.\n\nSoporte de TI - Daily Brew"
+  },
+  {
+    "titulo": "06 - Cierre del ticket",
+    "uso": "Al resolver. Confirmar y dejar la puerta abierta.",
+    "texto": "Hola %{ticket.name.first}:\n\nDamos por resuelta tu solicitud #%{ticket.number}. Si el problema vuelve en los próximos días, responde a este mismo mensaje y el ticket se reabre con todo el historial.\n\nEn el portal de soporte hay guías cortas para resolver los problemas más comunes por tu cuenta.\n\nGracias por tu paciencia.\n\nSoporte de TI - Daily Brew"
+  }
+]

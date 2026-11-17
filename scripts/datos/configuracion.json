@@ -1,0 +1,55 @@
+{
+  "helpdesk": {
+    "nombre": "Daily Brew - Soporte de TI",
+    "zona_horaria": "America/Guatemala",
+    "formato_fecha": "d/m/Y",
+    "formato_fecha_hora": "d/m/Y H:i"
+  },
+  "departamento": {
+    "nombre": "Soporte de TI",
+    "firma": "Soporte de TI - Daily Brew\nExtensión 100 | soporte@dailybrew.local"
+  },
+  "agentes": [
+    {
+      "clave": "n2",
+      "nombre": "Andrea",
+      "apellido": "Solís",
+      "usuario": "andrea.solis",
+      "correo": "andrea.solis@dailybrew.local",
+      "rol": "Expanded Access",
+      "nota": "Agente ficticio de soporte nivel 2 (infraestructura, red y seguridad)."
+    }
+  ],
+  "equipos": [
+    { "nombre": "Nivel 1", "lider": "admin", "miembros": ["admin"] },
+    { "nombre": "Nivel 2", "lider": "n2", "miembros": ["n2"] }
+  ],
+  "sla": [
+    { "nombre": "Crítico - 4h", "horas": 4, "nota": "Un área completa sin poder trabajar o un incidente de seguridad activo." },
+    { "nombre": "Normal - 24h", "horas": 24, "nota": "Afecta a una persona y tiene una solución temporal." },
+    { "nombre": "Baja - 72h", "horas": 72, "nota": "Solicitudes de servicio y consultas." }
+  ],
+  "temas": [
+    { "nombre": "Hardware", "sla": "Normal - 24h", "prioridad": "normal" },
+    { "nombre": "Software", "sla": "Normal - 24h", "prioridad": "normal" },
+    { "nombre": "Red e internet", "sla": "Crítico - 4h", "prioridad": "high" },
+    { "nombre": "Cuentas y accesos", "sla": "Normal - 24h", "prioridad": "normal" },
+    { "nombre": "Correo y Microsoft 365", "sla": "Normal - 24h", "prioridad": "normal" },
+    { "nombre": "Seguridad", "sla": "Crítico - 4h", "prioridad": "high" }
+  ],
+  "matriz_prioridad": {
+    "nota": "El tema pone un SLA por defecto; el agente lo ajusta con la matriz impacto x urgencia (ITIL).",
+    "emergency": "Crítico - 4h",
+    "high": "Normal - 24h",
+    "normal": "Normal - 24h",
+    "low": "Baja - 72h"
+  },
+  "categorias_kb": [
+    { "nombre": "Hardware", "descripcion": "Impresoras, computadoras, monitores y periféricos." },
+    { "nombre": "Red", "descripcion": "Internet, Wi-Fi y VPN." },
+    { "nombre": "Cuentas", "descripcion": "Contraseñas, bloqueos y permisos." },
+    { "nombre": "Microsoft 365", "descripcion": "Outlook, Teams y OneDrive." },
+    { "nombre": "Seguridad", "descripcion": "Correos sospechosos y buenas prácticas." },
+    { "nombre": "Software", "descripcion": "Programas, actualizaciones y Office." }
+  ]
+}
